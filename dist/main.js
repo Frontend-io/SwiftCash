@@ -1,0 +1,1 @@
+const dropdownLink = ['Transactions', 'Credit account', 'Transfer money']

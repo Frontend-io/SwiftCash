@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tailwind css</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='custom.css'>
+    <!-- ALPINE JS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+</head>
+<body class="m-0 p-0 bg-gray">
+    <header class="flex flex-col md:flex-row  sticky top-0 md:relative items-center justify-between mx-auto bg-white px-4 py-4 md:py-2  border-b-2 border-gray-200 border-gray z-50">
+        <span class=" text-2xl text-gray-600 font-bold">SwiftCash</span>
+        <div class="flex flex-col sm:flex-row items-center justify-between display-none md:display-block">
+            <div x-data="{dropdown: false}"  class=" user-id">
+                <div class="flex items-center">
+                    <img src="../assets/img/profile.png" alt="user-avatar" class=" w-6 rounded-full "/>
+                    <div class="flex flex-col">
+                        <p class=" ml-2 text-xs ">Iyobosajefferson2@gmail.com</p>
+                        <p @click="dropdown = true" class="500 mx-2 text-sm cursor-pointer">Account options &nearr; </p>
+                    </div>
+                </div>
+                <ul @click.away="dropdown = false" x-show.transition.duration.200ms.origin.top.right="dropdown" class="shadow-xl absolute right-0 flex flex-col bg-white z-40 rounded-sm dropdown v-hidden md:v-show ">
+                   <template x-for="(item, index) in dropdownLink" :key="item" x->
+                        <a x-bind:href="item.split(' ').join('').toLowerCase()" x-text="item" class="px-4 py-2 border-b hover:bg-gray-100"></a>
+                   </template>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <aside class="fixed left-0 top-0 min-h-full w-40 bg-gray-800 px-4 pt-4 z-0 display-none md:display-block ">
+        <span class="flex-1 text-2xl text-gray-400 font-bold ">SwiftCash</span>
+        <div class="flex flex-col items-between mt-10 z-20">
+            <ul>
+                <li class="text-gray-500 hover:text-white text-lg mb-4 is-active"><a href="#">Dashboard</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Wallet</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Account</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Transactions</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Security</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Card services</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Self service</a></li>
+                <li class="text-gray-500 hover:text-white text-lg mb-48"><a href="#">Customer care</a></li>
+            </ul>
+            <ul>
+                <li class="text-gray-500 hover:text-white text-lg mb-4"><a href="#">Sign out</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class=" bg-gray-100 pt-4 ml-0 md:ml-40">
+        <div class=" container ">
+            <div class="relative bg-yellow-400 border-l-4 border-yellow-600 full-width py-4 px-4 mb-4 rounded-sm message">
+                <h3 class=" font-bold ">Welcome back Afolabi Samuel</h3>
+                <p class="text-sm">We made a few upgrade to your Dashboard, we hope you love it</p>
+            </div>
+            <div class="items-center flex sec-head">
+                <h4 class="my-2 md:my-0 px-2 text-gray-800 font-semibold ">Account summary</h4>
+                <div class="flex-1 divider"></div>
+            </div>
+            <div class="flex flex-wrap flex-col md:flex-row dash-tabs">
+                <div class="flex flex-col justify-center flex-1 m-2 bg-white shadow-sm rounded-md py-2 md:py-0">
+                    <h2 class="text-md md:text-2xl text-gray-700 uppercase px-6 pb-2">Current Balance</h2>
+                    <div class="divider full-width"></div>
+                    <div class="mt-4">
+                        <h1 class="font-bold text-4xl px-6  ">NGN 50,000,000</h1>
+                        <p class=" text-blue-700 text-xs px-6  ">You can now make deposit from your ATM</p>
+                        <p class=" text-red-500 text-sm cursor-pointer px-6 inline-block  ">Fund your account &nRightarrow;</p>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 m-2 bg-white shadow-sm rounded-md py-2 md:py-0">
+                    <h2 class=" text-md md:text-2xl text-gray-700 px-6 pb-3 uppercase">Last Transaction</h2>
+                    <div class="divider full-width"></div>
+                    <div class="px-6 pt-2">
+                        <p class=" text-green-700 text-sm font-bold ">Debit alert</p>
+                        <p class=" text-gray-700 text-sm">Yesterday at 12:23pm | Benson Ighosa Nosa - First Bank ATM, Uniben</p>
+                        <h1 class="font-bold text-3xl">NGN 20,000,000</h1>
+                    </div>
+                </div>
+                <div class=" flex-1 m-2 justify-center  bg-gray-800 shadow-md py-8 px-6 rounded-md text-white ">
+                    <h1 class=" text-3xl ">Get a loan up to <br> 8,000,000 Million Naira</h1>
+                    <p class=" text-gray-400 text-md ">Visit your local bank to know more details and how to apply</p>
+                    <p class=" text-gray-400 text-xs mt-2 ">Terms and conditions apply &nabla;</p>
+                </div>
+            </div>
+            <!-- QUICK LINKS -->
+            <div class="items-center flex sec-head mt-4">
+                <h4 class="my-2 md:my-0 px-2 text-gray-800 font-semibold ">Quick Navigation</h4>
+                <div class="flex-1 divider"></div>
+            </div>
+        </div>
+       
+        <div class=" mt-4  flex-1 quick-action bg-white py-6 my-10 ">
+            <div class="flex flex-row flex-no-wrap flex-col  sm:flex-row justify-evenly quick-link ">
+                <a href="" class="flex-1 m-2 py-10  px-4 full-width md:max-w-sm border text-center  ">
+                    <h2 class="font-bold">Transfer Money</h2>
+                    <span class=" text-sm text-green-600 ">You can transfer up to 5,000,000 to any banks and get a receipt in real time</span>
+                </a>
+                <a href="" class="flex-1 m-2 py-10  px-4 full-width md:max-w-sm  border text-center  ">
+                    <h2 class="font-bold">Receive Cash</h2>
+                    <span class=" text-sm text-green-600 ">Anywhere in the world, you can receive payments through any payment channel</span>
+                </a>
+                <a href="" class="flex-1 m-2 py-10  px-4 full-width md:max-w-sm  border text-center  ">
+                    <h2 class="font-bold">Pay Utility Bills</h2>
+                    <span class=" text-sm text-green-600 ">Pay all your utility bills without leaving the comfort of your home</span>
+                </a>
+                <a href="" class="flex-1 m-2 py-10  px-4 full-width md:max-w-sm  border text-center  ">
+                    <h2 class="font-bold">Cardless cash withdrawal</h2>
+                    <span class=" text-sm text-green-600 ">Forgot your card home? You don't have to worry as you can easily withdrawal via Mobile App</span>
+                </a>
+            </div>
+            <div class=" container">
+                <div class="mt-4 flex-1 ">
+                    <div class="items-center flex sec-head">
+                        <h4 class="my-2 md:my-0 px-2 text-gray-800 font-semibold ">Most Recent Transaction</h4>
+                        <div class="flex-1 divider"></div>
+                    </div>
+                    <div class=" flex flex-col mt-2">
+                        <div class="flex justify-between flex-2 m-2 bg-gray-100  py-4  px-4 rounded-sm text-gray-800  ">
+                            <div class="action">
+                                    <span class="transaction-type font-bold">Credit transaction</span>
+                                    <p class="description">Osayande Asemota | Mok mobile money services, Lagos</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-bold">NGN 120,000</span>
+                                    <span class=" text-xs text-right text-green-600 ">12th Jan, 2019</span>
+                                </div>
+                        </div>
+                        <div class=" flex justify-between flex-2 m-2 bg-gray-100 py-4 px-4 rounded-sm text-gray-800  ">
+                            <div class="action">
+                                <span class="transaction-type font-bold">Debit alert</span>
+                                <p class="description">Jefferson Osagie | Uniben CompSc ATM , Benin city</p>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold">NGN 5,000</span>
+                                <span class=" text-xs text-right text-red-600 ">Yesterday</span>
+                            </div>
+                        </div>
+                        <div class=" flex justify-between flex-2 m-2 bg-gray-100  py-4  px-4 rounded-sm text-gray-800  ">
+                            <div class="action">
+                                <span class="transaction-type font-bold">Card Maintainance fee</span>
+                                <p class="description">Jefferson Osagie | Uniben CompSc ATM , Benin city</p>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold">NGN 12</span>
+                                <span class=" text-xs text-right text-orange-600 ">12th Jan, 2019</span>
+                            </div>
+                        </div>
+                        <div class=" sticky top-0 flex justify-between flex-2 m-2 bg-gray-100  py-4  px-4 rounded-sm text-gray-800  ">
+                            <div class="action">
+                                    <span class="transaction-type font-bold">Credit transaction</span>
+                                    <p class="description">Osayande Asemota | Mok mobile money services, Lagos</p>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-bold">NGN 120,000</span>
+                                    <span class=" text-xs text-right text-green-600 ">12th Jan, 2019</span>
+                                </div>
+                        </div>
+                        <div class=" flex justify-between flex-2 m-2 bg-gray-100  py-4  px-4 rounded-sm text-gray-800  ">
+                            <div class="action">
+                                <span class="transaction-type font-bold">Card Maintainance fee</span>
+                                <p class="description">Jefferson Osagie | Uniben CompSc ATM , Benin city</p>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold">NGN 12</span>
+                                <span class=" text-xs text-right text-orange-600 ">12th Jan, 2019</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="items-center flex sec-head mt-4">
+                        <a href="#" class="my-2 md:my-0 px-4 text-black italic order-2 bg-gray-100 p-2 border ">View all Transactions &nRightarrow;</a>
+                        <div class="flex-1 divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- <footer class=" pt-4 ml-0 md:ml-40 text-center bg-gray-800 py-20 text-white">
+        ALl
+    </footer> -->
+<script src='main.js'></script>
+</body>
+
+</html>
